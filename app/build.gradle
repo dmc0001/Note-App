@@ -7,6 +7,11 @@ android {
     namespace 'com.anyandroid.note'
     compileSdk 33
 
+    viewBinding {
+
+        enabled = true
+
+    }
     defaultConfig {
         applicationId "com.anyandroid.note"
         minSdk 24
@@ -17,10 +22,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // Enable debug log level
+            buildConfigField "String", "LOG_LEVEL", "\"DEBUG\""
         }
     }
     compileOptions {
@@ -29,6 +39,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+
+        viewBinding true
+
     }
 }
 
