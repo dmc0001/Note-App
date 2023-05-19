@@ -2,30 +2,35 @@ package com.anyandroid.note
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import androidx.recyclerview.widget.RecyclerView
 import com.anyandroid.note.databinding.FragmentNoteListBinding
+import com.anyandroid.note.model.Note
+import com.anyandroid.note.viewModel.ViewModelNote
+
+
 
 
 class NoteListFragment : Fragment() {
+
+    //private val viewModel: ViewModelNote by viewModels()
+
     private lateinit var noteRecyclerView: RecyclerView
     private lateinit var noteAdapter: NoteAdapter
-    lateinit var binding : FragmentNoteListBinding
-
+    private lateinit var binding : FragmentNoteListBinding
 
     companion object {
         fun newInstance() = NoteListFragment()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentNoteListBinding.inflate(inflater, container, false)
         noteRecyclerView = binding.noteRecyclerView
 
@@ -36,12 +41,9 @@ class NoteListFragment : Fragment() {
         )
         noteAdapter = NoteAdapter(notes)
         noteRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-        // Set the adapter to the RecyclerView
         noteRecyclerView.adapter = noteAdapter
         Log.d("NoteListFragment", "Notes: $notes")
 
         return binding.root
     }
-
 }

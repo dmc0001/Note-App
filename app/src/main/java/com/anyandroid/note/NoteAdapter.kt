@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.anyandroid.note.model.Note
+
 class NoteAdapter(
     private val kindergartenList: ArrayList<Note>
   //  , private val fragmentManager: FragmentManager
